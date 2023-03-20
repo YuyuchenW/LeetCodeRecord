@@ -15,7 +15,7 @@ public:
         int middle;
         int result_l = -1;
         int result_r = -1;
-        while (left <=right )
+       while (left <=right )
         {
             middle = (left+right)/2;
             if(nums[middle] == target){result_l = middle;break;}
@@ -27,7 +27,7 @@ public:
             else{
                 left = middle+1;
             }
-        }
+        } 
         if (result_l != -1)
         {
             result_r = result_l;
