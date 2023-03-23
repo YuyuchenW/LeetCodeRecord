@@ -1,59 +1,28 @@
 #include <string>
 using namespace std;
-class Solution
-{
+class Solution {
 public:
-    int mdfString(string &s)
+    string finalString(string s)
     {
-        int lo = 0, hi = 0;
-        int cnt = 0;
-        for (hi = 0; hi < s.size(); hi++)
+        string fString;
+        for(char i : s)
         {
-            if (s[hi] != '#')
+            if (i!= '#')
             {
-                s[lo] = s[hi];
-                ++lo;
+                fString.push_back(i);
             }
             else
             {
-                if (hi+1 -cnt -cnt>0)
+                if (!fString.empty())
                 {
-                    cnt++;
+                    fString.pop_back();
                 }
                 
-                if (lo>0)
-                {
-                    --lo;
-                    
-                }
             }
         }
-        return s.size()-cnt-cnt;
+        return fString;
     }
-    bool backspaceCompare(string s, string t)
-    {
-        if (s == t)
-        {
-            return true;
-        }
-        int i, k;
-        i = mdfString(s);
-        k = mdfString(t);
-        if (i == k)
-        {
-            if (i == 0)
-            {
-                return true;
-            }
-            
-            for (size_t j = 0; j < i; j++)
-            {
-                if (s[j] != t[j])
-                {
-                    return false;
-                }
-            }
-        }else{return false;}
-        return true;
+    bool backspaceCompare(string s, string t) {
+       return finalString(s) == finalString(t);
     }
 };
