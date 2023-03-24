@@ -1,32 +1,31 @@
-#include<vector>
-#include<stdint.h>
+#include <vector>
+#include <stdint.h>
 using namespace std;
-class Solution {
+class Solution
+{
 public:
-    int minSubArrayLen(int target, vector<int>& nums) {
+    int minSubArrayLen(int target, vector<int> &nums)
+    {
         int areaLeft = 0;
         int areaRight = 0;
-        int result = INT64_MAX;
+        int result = INT32_MAX;
         int sum = 0;
-        while (areaRight<nums.size())
+        while (areaRight != nums.size())
         {
-            
-            if (sum== target)
+            sum += nums[areaRight];
+            if (sum >= target)
             {
-                result = result<(areaRight-areaLeft)? result: areaRight-areaLeft;
+                while (sum >= target)
+                {
+                    sum -= nums[areaLeft];
+                    areaLeft++;
+                }
+                result = min(result, areaRight - areaLeft + 2);
             }
-            else if (sum<target)
-            {
-                sum+= nums[areaRight];
-                ++areaRight;
-            }
-            else{
-                sum =sum - nums[areaLeft];
-                ++areaLeft;
-            }
+
+            ++areaRight;
         }
-        
-        return result == INT64_MAX? 0:result;
-        
+
+        return result == INT32_MAX ? 0 : result;
     }
 };
