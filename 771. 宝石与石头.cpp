@@ -8,7 +8,7 @@ public:
     {
         char mp[128] = {0};
         for(char c: stones)
-        {
+        {    
             ++mp[c];
         }
 

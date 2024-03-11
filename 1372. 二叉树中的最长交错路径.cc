@@ -1,5 +1,4 @@
-#include<deque>
-#include<stdint.h>
+
 // Definition for a binary tree node.
 struct TreeNode
 {
@@ -14,31 +13,33 @@ struct TreeNode
 class Solution
 {
 public:
-    int dfs(TreeNode* nd, int64_t target)
+    int ans = 0;
+    void dfs(TreeNode *nd, bool flag, int path)
     {
         if (nd == nullptr)
         {
-            return 0;
+            return;
         }
-        
-        int cnt = 0;
-        if (nd->val == target)
+        ans = ans > path ? ans : path;
+        if (flag)
         {
-            cnt++;
+            dfs(nd->left, false, path + 1);
+            dfs(nd->right, true, 1);
         }
-        
-        cnt += dfs(nd->left,target- (nd->val));
-        cnt += dfs(nd->right, target- (nd->val));
-        return cnt;
+        else
+        {
+            dfs(nd->left, false, 1);
+            dfs(nd->right, true, path + 1);
+        }
     }
-    int pathSum(TreeNode *root, int targetSum)
+    int longestZigZag(TreeNode *root)
     {
         if (root == nullptr)
         {
             return 0;
         }
-
-        return dfs(root,targetSum) + pathSum(root->left,targetSum) + pathSum(root->right, targetSum);
-        
+        dfs(root->left,false,1);
+        dfs(root->right,true,1);        
+        return ans;
     }
-}; 
+};

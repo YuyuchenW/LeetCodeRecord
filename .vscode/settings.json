@@ -47,5 +47,6 @@
         "queue": "cpp",
         "stack": "cpp"
     },
-    "C_Cpp.default.compilerPath": "D:\\mingw64\\ucrt64\\bin\\g++.exe"
+    "C_Cpp.default.compilerPath": "D:\\mingw64\\ucrt64\\bin\\g++.exe",
+    "editor.guides.bracketPairs": true
 }
