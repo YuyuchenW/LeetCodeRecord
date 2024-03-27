@@ -53,6 +53,22 @@ using namespace std;
 class Solution {
 public:
     vector<int> findAnagrams(string s, string p) {
+        int sSize = s.size();
+        int pSize = p.size();
+        if (sSize < pSize)
+        {
+            return {};
+        }
+        int map[26] = {0};
+        for (size_t i = 0; i < pSize; i++)
+        {
+            ++map[p[i] - 'a'];
+        }
+        vector<int> res;
 
+        int left = 0;
+
+
+        
     }
 };
